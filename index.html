@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>學員電子書｜簡報牌庫</title>
+<style>
+body{margin:0;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:#eef0f5;color:#1c2130}
+main{max-width:860px;margin:0 auto;padding:36px 20px}
+h1{font-family:"Noto Serif TC",serif;font-size:28px;margin:0 0 6px}
+p.s{color:#566074;margin:0 0 22px;line-height:1.7}
+a.b{display:block;background:#fff;border:1px solid #dde1ea;border-radius:14px;padding:16px 18px;margin-bottom:12px;text-decoration:none;color:inherit;box-shadow:0 4px 14px rgba(20,30,50,.06)}
+a.b:hover{border-color:#b4532f}
+a.b b{font-size:18px;display:block}a.b small{color:#8a92a3}
+</style></head><body><main>
+<h1>學員電子書</h1>
+<p class="s">由「簡報牌庫」組合的電子書學員版。打開後會跟著講師的進度出現「📍 講師在…前往」提示。</p>
+<div id="list"></div>
+</main>
+<script>
+fetch('books.json').then(r=>r.json()).then(L=>{ document.getElementById('list').innerHTML=L.slice().reverse().map(b=>`<a class="b" href="${b.id}/"><b>${b.title}</b><small>${b.date}・${b.note||''}</small></a>`).join(''); });
+</script></body></html>
